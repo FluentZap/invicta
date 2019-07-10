@@ -5,13 +5,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        borderRadius: 75,
+        borderRadius: 80,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         width: 160,
         height: 160,
-        background: `#000000`,        
+        background: `#000000`,
+        margin: 20
     },
     laurel: {
         borderRadius: 75,
@@ -29,7 +30,15 @@ const useStyles = makeStyles(theme => ({
         fontFamily: "'Caesar Dressing', cursive",
         fontWeight: 'bold',
         userSelect: 'none',
-        
+        boxShadow: '2px 6px 10px 8px black',
+        '&:hover': {
+            backgroundColor: `#c3960f`,
+            
+        },
+        '&:active': {
+            backgroundColor: `#3c392d`
+    
+        }
     },
 }));
 

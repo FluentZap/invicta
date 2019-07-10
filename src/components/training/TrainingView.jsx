@@ -10,14 +10,17 @@ import PlayerStats from './PlayerStats';
 
 // font-family: 'Marcellus SC', serif;
 // font-family: 'Cinzel Decorative', cursive;
-
+//797 x 529
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundImage: `url(${Background})`,
+    // backgroundImage: `url(${Background})`,
     height: '100vh',
     width: '100%',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'bottom',
+    backgroundSize: '1594px 1058px',
+    backgroundRepeat: 'no-repeat',
+    imageRendering: 'pixelated',
   },
   input: {
     display: 'none',
