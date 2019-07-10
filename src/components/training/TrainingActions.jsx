@@ -2,7 +2,7 @@ import React from 'react'
 import { trainingActions }from '../../store'
 import TrainingAction from './TrainingAction';
 
-export default function TrainingActions(props) {
+export default function TrainingActions(props) {    
     
     return (
         <div>            
@@ -10,7 +10,7 @@ export default function TrainingActions(props) {
                 <TrainingAction 
                 name={action}
                 key={action}
-                handleStats={props.handleStats}/>
+                setActivity={props.setActivity}/>
                 )}
         </div>
     )

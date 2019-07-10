@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Background from '../../assets/trainingBG.png'
 import Grid from '@material-ui/core/Grid';
 
@@ -30,19 +30,45 @@ const useStyles = makeStyles(theme => ({
 
 export default function TrainingView(props) {
   const classes = useStyles();
-  console.log('ReRender');
-  
+
+  const [activity, setActivity] = useState('Idle');
+  useEffect(() => {
+    const statUpdate = setInterval(() => {
+        switch (activity) {
+          case 'Idle':
+            props.handleStats('health', .03)
+            break;
+          case 'Nourish':
+            props.handleStats('nourishment', .02)
+            break;
+          case 'Sleep':
+            props.handleStats('energy', .01)
+            break;
+          case 'Train':
+            props.handleStats('strength', .01)
+            break;
+
+          default:
+            break;
+      }
+    }, 10)
+
+    return () => {
+      clearInterval(statUpdate)
+    };
+  })
+
   return (
     <Grid container className={classes.root} spacing={0}>
       <Grid item xs={12} sm={4}>
         <TrainingActions
-        handleStats={props.handleStats}/>
+          setActivity={setActivity}/>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <PlayerView/>
+        <PlayerView />
       </Grid>
       <Grid item xs={12} sm={4}>
-        <PlayerStats player={props.player}/>
+        <PlayerStats player={props.player} />
       </Grid>
     </Grid>
   )

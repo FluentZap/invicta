@@ -27,13 +27,13 @@ const PlayerStatBar = (props) => {
     //     }
     // })
     const BGPercent = {
-        background: `linear-gradient(90deg, rgba(187,0,2,1) 0%, rgba(187,0,2,1) ${props.health}%, rgba(238,237,237,0) 0%)`
+        background: `linear-gradient(90deg, rgba(187,0,2,1) 0%, rgba(187,0,2,1) ${props.value}%, rgba(238,237,237,0) 0%)`
     }
     return (
         <div className={classes.root}>
             <div>
-                <h3>Health</h3>
-                <p className={classes.bar} style={BGPercent}>Health</p>
+                <h3>{props.name}</h3>
+                <p className={classes.bar} style={BGPercent}>{props.name}</p>
             </div>
         </div>
     )

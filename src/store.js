@@ -1,10 +1,10 @@
 export const trainingActions = [ 'Nourish', 'Sleep', 'Train']
 
 export const InitStats = {
-    health: 100,
-    energy: 100,
-    charisma: 100,
-    strength: 100,
-    dexterity: 100,
-    nourishment: 100
+    health: 0,
+    energy: 0,
+    charisma: 0,
+    strength: 0,
+    dexterity: 0,
+    nourishment: 0
 }

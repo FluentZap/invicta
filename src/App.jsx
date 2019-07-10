@@ -22,7 +22,6 @@ export default function App() {
       player={player}
       handleStats={handleStats}
       />
-      {/* <button onClick={() => handleStats('health', -10)}>Click</button> */}
     </div>
   );
 

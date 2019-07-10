@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
 const TrainingAction = (props) => {
     const classes = useStyles();
     return (
-        <div className={classes.root} onClick={() => props.handleStats('health', -10)}>
+        <div className={classes.root} onClick={() => props.setActivity(props.name)}>
             <div className={classes.laurel}>{props.name}</div>
         </div>
     )
