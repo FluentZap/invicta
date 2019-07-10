@@ -28,19 +28,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function TrainingView() {
+export default function TrainingView(props) {
   const classes = useStyles();
-
+  console.log('ReRender');
+  
   return (
     <Grid container className={classes.root} spacing={0}>
       <Grid item xs={12} sm={4}>
-        <TrainingActions/>
+        <TrainingActions
+        handleStats={props.handleStats}/>
       </Grid>
       <Grid item xs={12} sm={4}>
         <PlayerView/>
       </Grid>
       <Grid item xs={12} sm={4}>
-        <PlayerStats/>
+        <PlayerStats player={props.player}/>
       </Grid>
     </Grid>
   )
