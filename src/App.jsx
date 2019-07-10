@@ -1,9 +1,10 @@
 import React from 'react';
+import TrainingView from './components/training/TrainingView';
 
 function App() {
   return (
     <div className="App">
-         App Main
+      <TrainingView/>      
     </div>
   );
 }
