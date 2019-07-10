@@ -5,8 +5,7 @@ import TrainingAction from './TrainingAction';
 export default function TrainingActions() {
     
     return (
-        <div>
-            <h1>Training</h1>
+        <div>            
             {trainingActions.map((action)=>
                 <TrainingAction name={action}/>
                 )}

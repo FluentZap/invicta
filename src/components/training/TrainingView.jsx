@@ -7,6 +7,10 @@ import TrainingActions from './TrainingActions';
 import PlayerView from './PlayerView';
 import PlayerStats from './PlayerStats';
 
+
+// font-family: 'Marcellus SC', serif;
+// font-family: 'Cinzel Decorative', cursive;
+
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundImage: `url(${Background})`,
