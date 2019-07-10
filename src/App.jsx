@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TrainingView from './components/training/TrainingView';
+import { InitStats } from './store';
 
-function App() {
+export default function App() {
+
+  const [player, setPlayer] = useState(InitStats);
+
+  const handleStats = (statString, value) => {
+    console.log(player);
+
+    setPlayer(player => {
+      let newplayer = {...player}
+      newplayer[statString] += value;
+      return newplayer;
+    })
+  }
+
   return (
     <div className="App">
-      <TrainingView/>      
+      <TrainingView
+      player={player}
+      handleStats={handleStats}
+      />
+      {/* <button onClick={() => handleStats('health', -10)}>Click</button> */}
     </div>
   );
-}
 
-export default App;
+}
