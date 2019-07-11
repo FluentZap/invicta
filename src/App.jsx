@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import TrainingView from './components/training/TrainingView';
+import CombatView from './components/combat/CombatView';
 import { InitStats } from './store';
+import { Router } from '@reach/router';
 
 export default function App() {
 
@@ -25,10 +27,15 @@ export default function App() {
 
   return (
     <div className="App">
-      <TrainingView
-      player={player}
-      handleStats={handleStats}
-      />
+      <Router>
+        <TrainingView path="/"
+        player={player}
+        handleStats={handleStats}
+        />
+        <CombatView path="/combat"
+        player={player}
+        />
+      </Router>
     </div>
   );
 

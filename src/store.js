@@ -1,5 +1,6 @@
 export const trainingActions = [
     'Feast', 'Sleep', 'Kick Trees', 'Spar', 'Socialise', 'Medcus']
+export const combatActions = ['Light Attack', 'Heavy Attack', 'Stun', 'Aggressive', 'Evasive', 'Defensive']
 
 //Stun
 //roll of 20 or higher gets a crit

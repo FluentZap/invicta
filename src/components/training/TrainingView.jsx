@@ -7,9 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TrainingActions from './TrainingActions';
 import PlayerView from './PlayerView';
 import PlayerStats from './PlayerStats';
-
-
-
+import { Link } from '@reach/router';
 
 // font-family: 'Marcellus SC', serif;
 // font-family: 'Cinzel Decorative', cursive;
@@ -28,6 +26,12 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
+  header: {
+    fontFamily: "'Caesar Dressing', cursive",
+    fontWeight: 'bold',
+    display: 'flex',
+    justifyContent: 'space-around'
+  }
 }));
 // energy: 0,
 //   nourishment: 0,
@@ -146,21 +150,27 @@ export default function TrainingView(props) {
 
 
   return (
-    <Grid container className={classes.root} spacing={0}>
-      <Grid item xs={12} sm={4}>
-        <TrainingActions
-          setActivity={updateActivity} />
+    <>
+      <header className={classes.header}>
+        <h1>INVICTUS</h1>
+        <Link to="combat">Combat View</Link>
+      </header>
+      <Grid container className={classes.root} spacing={0}>
+        <Grid item xs={12} sm={4}>
+          <TrainingActions
+            setActivity={updateActivity} />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <PlayerView
+            spriteSheet={PlayerSprite}
+            size={{ x: 425, y: 275 }}
+            currentSprite={sprite.sprite}
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <PlayerStats player={props.player} />
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={4}>
-        <PlayerView
-          spriteSheet={PlayerSprite}
-          size={{ x: 425, y: 275 }}
-          currentSprite={sprite.sprite}
-        />
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <PlayerStats player={props.player} />
-      </Grid>
-    </Grid>
+    </>
   )
 }
