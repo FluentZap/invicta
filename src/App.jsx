@@ -6,15 +6,19 @@ export default function App() {
 
   const [player, setPlayer] = useState(InitStats);
 
-  const handleStats = (statString, value) => {
+  const handleStats = (value, key) => {
     // console.log(player);
-
+    let changes = Object.entries(value)
+    
     setPlayer(player => {
-      let newplayer = {...player}
-      newplayer.currentStats[statString] += value;
-      if (newplayer.currentStats[statString] > newplayer.maxStats[statString]) {
-        newplayer.currentStats[statString] = newplayer.maxStats[statString]
-      }
+      let newplayer = {...player}            
+      changes.forEach((change) =>{        
+        newplayer.currentStats[change[0]] += change[1];
+        if (newplayer.currentStats[change[0]] > newplayer.maxStats[change[0]]) {
+          newplayer.currentStats[change[0]] = newplayer.maxStats[change[0]]
+        }  
+      })
+      
       return newplayer;
     })
   }

@@ -26,8 +26,8 @@ export const InitStats = {
     level: 1,
     xp: 0,
     currentStats: {
-        energy: 0,
-        nourishment: 0,
+        energy: 20,
+        nourishment: 20,
         accuracy: 0,
         health: 15,
         charisma: 0,

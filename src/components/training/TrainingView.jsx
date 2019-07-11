@@ -48,20 +48,31 @@ export default function TrainingView(props) {
       // 'Feast', 'Sleep', 'Kick Trees', 'Spar', 'Socialise', 'Medcus'
       switch (activity) {
         case 'Sleep':
-          props.handleStats('energy', .01)
-          props.handleStats('nourishment', -0.01)
+          props.handleStats({
+            energy: .01,
+            nourishment: -0.001
+          })
           break;
         case 'Feast':
-          props.handleStats('nourishment', .01)
+        props.handleStats({
+          energy: .001,
+          nourishment: .02
+        })
           break;
         case 'Kick Trees':
-          props.handleStats('strength', .01)
-          props.handleStats('nourishment', -0.01)
+        props.handleStats({
+          energy: -0.01,
+          nourishment: -0.01,
+          strength: 0.01,
+        })
           break;
         case 'Spar':
-          props.handleStats('speed', .01)
-          props.handleStats('strength', .01)
-          props.handleStats('nourishment', -0.01)
+        props.handleStats({
+          energy: -0.01,
+          nourishment: -0.01,
+          speed: 0.01,
+          evasion: 0.01,
+        })
           break;
         default:
           break;
