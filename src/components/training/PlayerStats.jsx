@@ -3,7 +3,7 @@ import PlayerStatBar from './PlayerStatBar';
 
 export default function PlayerStats(props) {
     const statArray = Object.entries(props.player);
-    console.log(statArray);
+    // console.log(statArray);
     
     
     return (

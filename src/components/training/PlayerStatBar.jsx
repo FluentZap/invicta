@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 const PlayerStatBar = (props) => {
     const classes = useStyles();
     // const percentage = 30;\
-    console.log('StatBar', props);
+    // console.log('StatBar', props);
     // const BGPercent = {
     //     background: `linear-gradient(90deg, rgba(187,0,2,1) 0%, rgba(187,0,2,1) 100%, rgba(238,237,237,0) 0%)`
     // }

@@ -1,56 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import CharacterImage12 from '../../assets/ezgif-2-921cf343ee3d-gif-85x55-sprite-png/tile012.png'
-import CharacterImage14 from '../../assets/ezgif-2-921cf343ee3d-gif-85x55-sprite-png/tile014.png'
-import Background from '../../assets/parchment.jpg'
 import { makeStyles } from '@material-ui/core/styles';
-
-
-
-
-// function advanceAnimation(index, ) {
-
-// }
-
 
 const useStyles = makeStyles(theme => ({
   root: {
+    overflow: 'hidden'
     // backgroundColor: '#ceaf79',
     // backgroundImage: `url(${Background})`,
-    height: '100vh',
+    // height: props.height,
+    // width: props.width,
     // width: '100%',
     // backgroundSize: 'cover',
     // backgroundRepeat: 'no-repeat'    
   },
-  image: {
-    width: 600,
-    imageRendering: 'pixelated',    
-    
+  image: {    
+    imageRendering: 'pixelated',
   }
 }));
 
 
 export default function PlayerView(props) {
-  const [sprite, setSprite] = useState(0);
-  useEffect(() => {
-    const animate = setInterval(() => {
-      if (sprite >= 1) {
-        setSprite(0)
-      } else {
-        setSprite(sprite + 1)
-      }          
-    }, 1000)
-  
-    return () => {
-      clearInterval(animate)
-    };
-  })
-
   const classes = useStyles();
-  const image = [CharacterImage12, CharacterImage14]
-
+  
+  //85 x 55
   return (
-    <div className={classes.root}>
-      <img className={classes.image} src={image[sprite]} alt=""/>
+    <div className={classes.root} style={{ width: props.size.x, height: props.size.y }}>
+      <img 
+        className={classes.image} src={props.spriteSheet} 
+        style={{ width: '600%', height: '600%', 
+        marginLeft: -(props.size.x * props.currentSprite.x),
+        marginTop: -(props.size.y * props.currentSprite.y) }}/>
     </div>
   )
 }

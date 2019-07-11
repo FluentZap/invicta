@@ -7,7 +7,7 @@ export default function App() {
   const [player, setPlayer] = useState(InitStats);
 
   const handleStats = (statString, value) => {
-    console.log(player);
+    // console.log(player);
 
     setPlayer(player => {
       let newplayer = {...player}
