@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function PlayerView(props) {
+export default function SpriteView(props) {
   const classes = useStyles();
   
   //85 x 55
