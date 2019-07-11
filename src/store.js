@@ -1,4 +1,5 @@
 export const trainingActions = ['Nourish', 'Sleep', 'Get Buff', 'Acrobatics']
+export const combatActions = ['Light Attack', 'Heavy Attack', 'Stun', 'Aggressive', 'Evasive', 'Defensive']
 
 export const InitStats = {
     currentStats: {

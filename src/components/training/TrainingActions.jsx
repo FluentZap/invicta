@@ -1,13 +1,13 @@
 import React from 'react'
 import { trainingActions }from '../../store'
-import TrainingAction from './TrainingAction';
+import ActionButton from '../ActionButton';
 
 export default function TrainingActions(props) {    
     
     return (
         <div>            
             {trainingActions.map((action)=>
-                <TrainingAction 
+                <ActionButton 
                 name={action}
                 key={action}
                 setActivity={props.setActivity}/>

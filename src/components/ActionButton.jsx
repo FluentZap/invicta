@@ -1,5 +1,5 @@
 import React from 'react'
-import Laurel from '../../assets/laurel.png'
+import Laurel from '../assets/laurel.png'
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -44,9 +44,6 @@ const useStyles = makeStyles(theme => ({
 
 // font-family: 'Cinzel Decorative', cursive;
 // font-family: 'Caesar Dressing', cursive;
-
-
-
 
 const TrainingAction = (props) => {
     const classes = useStyles();

@@ -28,7 +28,9 @@ export default function App() {
         player={player}
         handleStats={handleStats}
         />
-        <CombatView path="/combat"/>
+        <CombatView path="/combat"
+        player={player}
+        />
       </Router>
     </div>
   );
