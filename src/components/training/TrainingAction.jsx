@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 125,
-        backgroundPositionY: 28,
+        backgroundPositionX: 4,
         color: '#bb0002',
         fontFamily: "'Caesar Dressing', cursive",
         fontWeight: 'bold',

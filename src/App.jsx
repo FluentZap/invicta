@@ -11,7 +11,10 @@ export default function App() {
 
     setPlayer(player => {
       let newplayer = {...player}
-      newplayer[statString] += value;
+      newplayer.currentStats[statString] += value;
+      if (newplayer.currentStats[statString] > newplayer.maxStats[statString]) {
+        newplayer.currentStats[statString] = newplayer.maxStats[statString]
+      }
       return newplayer;
     })
   }

@@ -2,121 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Background from '../../assets/trainingBG.png'
 import Grid from '@material-ui/core/Grid';
 import PlayerSprite from '../../assets/gladiator.png'
-
+import { playerAnimations } from '../../store'
 import { makeStyles } from '@material-ui/core/styles';
 import TrainingActions from './TrainingActions';
 import PlayerView from './PlayerView';
 import PlayerStats from './PlayerStats';
 
 
-const animations = {
-  idle: {
-    frames: [
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
-    ],
-    time: 10,
-    after: 'repeat'
-  },
-  attack: {
-    frames: [
-      { x: 0, y: 0 },
-      { x: 1, y: 0 },
-    ],
-    time: 5,
-    after: 'idle'
-  },
-  goToSleep: {
-    frames: [
-      { x: 1, y: 5 },
-      { x: 2, y: 5 },
-      { x: 3, y: 5 },
-      { x: 4, y: 5 },
-      { x: 5, y: 5 },      
-    ],
-    time: 2,
-    after: 'sleep'
-  },
-  sleep: {
-    frames: [
-      { x: 5, y: 5 },
-      { x: 5, y: 5 },
-      { x: 5, y: 5 },
-      { x: 5, y: 5 },
-      { x: 5, y: 5 },
-      { x: 5, y: 5 },
-      { x: 4, y: 5 },          
-    ],
-    time: 10,
-    after: 'repeat'
-  },
-  train: {
-    frames: [
-      { x: 0, y: 4 },
-      { x: 1, y: 4 },
-      { x: 2, y: 4 },
-      { x: 3, y: 4 },
-      { x: 4, y: 4 },
-      { x: 4, y: 4 },
-      { x: 3, y: 4 },
-      { x: 2, y: 4 },
-      { x: 1, y: 4 },
-    ],
-    time: 2,
-    after: 'repeat'
-  },
-  decap: {
-    frames: [
-      { x: 1, y: 2 },
-      { x: 2, y: 2 },
-      { x: 3, y: 2 },
-      { x: 4, y: 2 },
-      { x: 5, y: 2 },
-      { x: 0, y: 3 }
-    ],
-    time: 5,
-    after: 'stop'
-  },
-  victory: {
-    frames: [
-      { x: 1, y: 3 },
-      { x: 2, y: 3 },
-      { x: 3, y: 3 },
-      { x: 4, y: 3 },
-      { x: 5, y: 3 },
-      { x: 4, y: 3 },
-      { x: 3, y: 3 },
-      { x: 4, y: 3 },
-      { x: 5, y: 3 },
-      { x: 4, y: 3 },
-      { x: 3, y: 3 },
-      { x: 2, y: 3 },
-      { x: 1, y: 3 },
-      // kick
-      { x: 1, y: 4 },
-      { x: 2, y: 4 },
-      { x: 3, y: 4 },
-      { x: 4, y: 4 },
-      { x: 4, y: 4 },
-      { x: 3, y: 4 },
-      { x: 2, y: 4 },
-      { x: 1, y: 4 },
-      // fist pump
-      { x: 3, y: 0 },
-      { x: 2, y: 0 },
-      { x: 1, y: 0 },
-      { x: 2, y: 0 },
-      { x: 3, y: 0 },
-      { x: 2, y: 0 },
-      { x: 1, y: 0 },
-      { x: 0, y: 0 },
 
-    ],
-    time: 1,
-    after: 'idle'
-  },
-
-}
 
 // font-family: 'Marcellus SC', serif;
 // font-family: 'Cinzel Decorative', cursive;
@@ -152,12 +45,14 @@ export default function TrainingView(props) {
           props.handleStats('nourishment', .02)
           break;
         case 'Sleep':
-          props.handleStats('energy', .01)
+          props.handleStats('energy', .01)          
           break;
-        case 'Train':
+        case 'Get Buff':
           props.handleStats('strength', .01)
           break;
-
+          case 'Acrobatics':
+          props.handleStats('dexterity', .01)
+          break;          
         default:
           break;
       }
@@ -167,6 +62,26 @@ export default function TrainingView(props) {
       clearInterval(statUpdate)
     };
   }, [activity])
+
+  const updateActivity = (name) => {
+    setActivity(name)
+    if (name === "Sleep") {setSprite(getStartAnimation('goToSleep'))}    
+    if (name === "Train") {setSprite(getStartAnimation('train'))}
+    if (name === "Nourish") {setSprite(getStartAnimation('nourish'))}
+    if (name === "Get Buff") {setSprite(getStartAnimation('train'))}
+    if (name === "Acrobatics") {setSprite(getStartAnimation('victory'))}
+  }
+
+
+  function getStartAnimation(name) {
+    return {
+      animation: name,
+      index: 0,
+      time: 0,
+      sprite: playerAnimations[name].frames[0],
+      running: true
+    }
+  }
 
   const [sprite, setSprite] = useState(
     {
@@ -179,7 +94,7 @@ export default function TrainingView(props) {
   );
   useEffect(() => {
     const animate = setInterval(() => {
-      let currentAnim = animations[sprite.animation];
+      let currentAnim = playerAnimations[sprite.animation];
       if (sprite.time >= currentAnim.time) {
         
         if (sprite.index >= currentAnim.frames.length - 1) {
@@ -193,7 +108,7 @@ export default function TrainingView(props) {
           } else {
             newAnimation = currentAnim.after
             newIndex = 0;      
-            currentAnim = animations[newAnimation];
+            currentAnim = playerAnimations[newAnimation];
           }          
 
           let currentSprite = { ...sprite, index: newIndex, sprite: currentAnim.frames[newIndex], time: 0, running: running, animation: newAnimation };
@@ -221,7 +136,7 @@ export default function TrainingView(props) {
     <Grid container className={classes.root} spacing={0}>
       <Grid item xs={12} sm={4}>
         <TrainingActions
-          setActivity={setActivity} />
+          setActivity={updateActivity} />
       </Grid>
       <Grid item xs={12} sm={4}>
         <PlayerView
