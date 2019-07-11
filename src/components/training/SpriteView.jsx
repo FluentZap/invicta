@@ -4,14 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    overflow: 'hidden'
-    // backgroundColor: '#ceaf79',
-    // backgroundImage: `url(${Background})`,
-    // height: props.height,
-    // width: props.width,
-    // width: '100%',
-    // backgroundSize: 'cover',
-    // backgroundRepeat: 'no-repeat'    
+    overflow: 'hidden' 
   },
   image: {    
     imageRendering: 'pixelated',

@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import { playerAnimations } from '../../store'
 import PlayerSprite from '../../assets/gladiator.png'
-import PlayerView from '../../components/training/PlayerView';
+import PlayerView from '../training/SpriteView';
 // import PlayerStats from './PlayerStats';
 
 const useStyles = makeStyles(theme => ({

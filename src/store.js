@@ -183,3 +183,6 @@ export const playerAnimations = {
     },
 
 }
+
+
+//24 x 32

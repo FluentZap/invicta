@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Background from '../../assets/trainingBG.png'
 import Grid from '@material-ui/core/Grid';
 import PlayerSprite from '../../assets/gladiator.png'
+import SkelieSprite from '../../assets/Skeleton Idle.png'
 import { playerAnimations } from '../../store'
 import { makeStyles } from '@material-ui/core/styles';
 import TrainingActions from './TrainingActions';
-import PlayerView from './PlayerView';
+import SpriteView from './SpriteView'
 import PlayerStats from './PlayerStats';
 import { Link } from '@reach/router';
 
@@ -161,9 +162,14 @@ export default function TrainingView(props) {
             setActivity={updateActivity} />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <PlayerView
+          <SpriteView
             spriteSheet={PlayerSprite}
-            size={{ x: 425, y: 275 }}
+            size={{ x: 85 * 5, y: 55 * 5 }}
+            currentSprite={sprite.sprite}
+          />
+          <SpriteView
+            spriteSheet={SkelieSprite}
+            size={{ x: 24 * 5, y: 32 * 5 }}
             currentSprite={sprite.sprite}
           />
         </Grid>
