@@ -29,34 +29,44 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
 }));
-
+// energy: 0,
+//   nourishment: 0,
+//     accuracy: 0,
+//       health: 15,
+//         charisma: 0,
+//           strength: 0,
+//             speed: 0,
+//               vitality: 0,
+//                 evasion: 0,
 
 export default function TrainingView(props) {
   const classes = useStyles();
 
-  const [activity, setActivity] = useState('Idle');
+  const [activity, setActivity] = useState('Sleep');
   useEffect(() => {
     const statUpdate = setInterval(() => {
+      // 'Feast', 'Sleep', 'Kick Trees', 'Spar', 'Socialise', 'Medcus'
       switch (activity) {
-        case 'Idle':
-          props.handleStats('health', .03)
-          break;
-        case 'Nourish':
-          props.handleStats('nourishment', .02)
-          break;
         case 'Sleep':
-          props.handleStats('energy', .01)          
+          props.handleStats('energy', .01)
+          props.handleStats('nourishment', -0.01)
           break;
-        case 'Get Buff':
+        case 'Feast':
+          props.handleStats('nourishment', .01)
+          break;
+        case 'Kick Trees':
           props.handleStats('strength', .01)
+          props.handleStats('nourishment', -0.01)
           break;
-          case 'Acrobatics':
-          props.handleStats('dexterity', .01)
-          break;          
+        case 'Spar':
+          props.handleStats('speed', .01)
+          props.handleStats('strength', .01)
+          props.handleStats('nourishment', -0.01)
+          break;
         default:
           break;
       }
-    }, 10)
+    }, 20)
 
     return () => {
       clearInterval(statUpdate)
@@ -65,11 +75,11 @@ export default function TrainingView(props) {
 
   const updateActivity = (name) => {
     setActivity(name)
-    if (name === "Sleep") {setSprite(getStartAnimation('goToSleep'))}    
-    if (name === "Train") {setSprite(getStartAnimation('train'))}
-    if (name === "Nourish") {setSprite(getStartAnimation('nourish'))}
-    if (name === "Get Buff") {setSprite(getStartAnimation('train'))}
-    if (name === "Acrobatics") {setSprite(getStartAnimation('victory'))}
+    if (name === "Sleep") { setSprite(getStartAnimation('goToSleep')) }
+    if (name === "Train") { setSprite(getStartAnimation('train')) }
+    if (name === "Nourish") { setSprite(getStartAnimation('nourish')) }
+    if (name === "Get Buff") { setSprite(getStartAnimation('train')) }
+    if (name === "Acrobatics") { setSprite(getStartAnimation('victory')) }
   }
 
 
@@ -83,20 +93,12 @@ export default function TrainingView(props) {
     }
   }
 
-  const [sprite, setSprite] = useState(
-    {
-      animation: 'victory',
-      index: 0,
-      time: 0,
-      sprite: { x: 0, y: 0 },
-      running: true
-    }
-  );
+  const [sprite, setSprite] = useState(getStartAnimation('sleep'));
   useEffect(() => {
     const animate = setInterval(() => {
       let currentAnim = playerAnimations[sprite.animation];
       if (sprite.time >= currentAnim.time) {
-        
+
         if (sprite.index >= currentAnim.frames.length - 1) {
           let newIndex = 0;
           let newAnimation = sprite.animation;
@@ -107,9 +109,9 @@ export default function TrainingView(props) {
             running = false; newIndex = sprite.index
           } else {
             newAnimation = currentAnim.after
-            newIndex = 0;      
+            newIndex = 0;
             currentAnim = playerAnimations[newAnimation];
-          }          
+          }
 
           let currentSprite = { ...sprite, index: newIndex, sprite: currentAnim.frames[newIndex], time: 0, running: running, animation: newAnimation };
           setSprite(currentSprite);

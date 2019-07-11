@@ -1,21 +1,51 @@
-export const trainingActions = ['Nourish', 'Sleep', 'Get Buff', 'Acrobatics']
+export const trainingActions = [
+    'Feast', 'Sleep', 'Kick Trees', 'Spar', 'Socialise', 'Medcus']
+
+//Stun
+//roll of 20 or higher gets a crit
+
+
+//dex Change to evade and crit
+
+//Strength Damage
+//Accuracy Hit Chance/crit chance
+//Speed action speeds
+//Vitality Max Health
+//Evasion evade hits
+//XP levels up player
+
+//For each level upgrade 
+
+
+
+
+//d6
+//d10
 
 export const InitStats = {
+    level: 1,
+    xp: 0,
     currentStats: {
-        health: 0,
         energy: 0,
+        nourishment: 0,
+        accuracy: 0,
+        health: 15,
         charisma: 0,
         strength: 0,
-        dexterity: 0,
-        nourishment: 0,
+        speed: 0,
+        vitality: 0,
+        evasion: 0,
     },
     maxStats: {
-        health: 100,
-        energy: 100,
-        charisma: 100,
-        strength: 100,
-        dexterity: 100,
-        nourishment: 100,
+        energy: 40,
+        nourishment: 40,
+        accuracy: 40,
+        health: 15,
+        charisma: 40,
+        strength: 40,
+        speed: 40,
+        vitality: 40,
+        evasion: 40,
     }    
 }
 

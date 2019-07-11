@@ -25,8 +25,13 @@ export default function TrainingActions(props) {
 
 //Strength Damage
 //Accuracy Hit Chance/crit chance
-//Speed move speeds
-//Vitality Max health
+//Speed action speeds
+//Vitality Max Health
+//Evasion evade hits
+//XP levels up player
+
+//For each level upgrade 
+
 
 
 
