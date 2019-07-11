@@ -5,7 +5,7 @@ export default function PlayerStats(props) {
     const statArray = Object.entries(props.player.currentStats);
     const maxStatArray = Object.entries(props.player.maxStats);
     // console.log(statArray);
-    console.log(statArray);
+    // console.log(statArray);
     
     
     return (

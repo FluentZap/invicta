@@ -4,6 +4,9 @@ import CombatActions from '../combat/CombatActions'
 import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import { playerAnimations } from '../../store'
+import PlayerSprite from '../../assets/gladiator.png'
+import PlayerView from '../../components/training/PlayerView';
+// import PlayerStats from './PlayerStats';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -107,23 +110,23 @@ export default function CombatView(props) {
         <>
         <header className={classes.header}>
           <h1>INVICTUS</h1>
-          <Link to="combat">Combat View</Link>
+          <Link to="/">Training View</Link>
         </header>
         <Grid container className={classes.root} spacing={0}>
           <Grid item xs={12} sm={4}>
             <CombatActions
               setActivity={updateActivity} />
           </Grid>
-          {/* <Grid item xs={12} sm={4}>
+         <Grid item xs={12} sm={4}>
             <PlayerView
               spriteSheet={PlayerSprite}
               size={{ x: 425, y: 275 }}
               currentSprite={sprite.sprite}
             />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          {/* <Grid item xs={12} sm={4}>
             <PlayerStats player={props.player} />
-          </Grid> */}
+          </Grid>  */}
         </Grid>
       </>
     )
