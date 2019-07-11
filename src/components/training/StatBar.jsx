@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     }
 })
 
-const PlayerStatBar = (props) => {
+const StatBar = (props) => {
     const classes = useStyles();
     // const percentage = 30;\
     // console.log('StatBar', props);
@@ -52,4 +52,4 @@ const PlayerStatBar = (props) => {
     )
 }
 
-export default PlayerStatBar
+export default StatBar

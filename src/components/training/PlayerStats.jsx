@@ -1,5 +1,5 @@
 import React from 'react'
-import PlayerStatBar from './PlayerStatBar';
+import StatBar from './StatBar';
 
 export default function PlayerStats(props) {
     const statArray = Object.entries(props.player.currentStats);
@@ -11,7 +11,7 @@ export default function PlayerStats(props) {
     return (
         <div>
             {statArray.map((stat, index)=> 
-                <PlayerStatBar 
+                <StatBar 
                 name={stat[0]} 
                 value={stat[1]} 
                 max={maxStatArray[index][1]} 
