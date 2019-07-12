@@ -20,7 +20,7 @@ export default function SpriteView(props) {
     <div className={classes.root} style={{ width: props.size.x, height: props.size.y }}>
       <img 
         className={classes.image} src={props.spriteSheet} 
-        style={{ width: '600%', height: '600%', 
+        style={{ width: props.size.x * 11, height: props.size.y * 1, 
         marginLeft: -(props.size.x * props.currentSprite.x),
         marginTop: -(props.size.y * props.currentSprite.y) }}/>
     </div>
